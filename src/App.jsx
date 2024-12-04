@@ -4,7 +4,6 @@ import Login from './components/Login';
 import Register from './components/Register';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/DashBoard';
-import Navbar from './components/NavBar';
 import Profile from './components/Profile';
 
 function App() {
