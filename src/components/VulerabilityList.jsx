@@ -8,7 +8,7 @@ const VulnerabilityList = () => {
   useEffect(() => {
     const fetchVulnerabilities = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/vulnerabilities'); // Replace with your API URL
+        const response = await axios.get('https://nexshield-server.onrender.com/vulnerabilities'); // Replace with your API URL
         setVulnerabilities(response.data);
       } catch (error) {
         console.error('Error fetching vulnerabilities:', error);

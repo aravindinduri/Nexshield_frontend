@@ -43,7 +43,7 @@ function Register() {
       };
 
       const response = await axios.post(
-        "http://localhost:5000/api/register/",
+        "https://nexshield-server.onrender.com/api/register/",
         formData,
         config
       );

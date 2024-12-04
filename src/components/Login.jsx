@@ -35,8 +35,7 @@ function Login() {
         "Content-type": "application/json",
       },
     };
-    // Assuming axios.post returns a promise
-    const response = await axios.post('http://localhost:5000/api/login', formData,config);
+    const response = await axios.post('https://nexshield-server.onrender.com/api/login', formData,config);
 
     
     toast("Login successful!");
