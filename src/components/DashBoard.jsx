@@ -1,4 +1,4 @@
-import Navbar from "./NavBar";
+import Navbar from "./Navbar";
 import VulnerabilityList from "./VulerabilityList";
 import { useNavigate } from "react-router-dom";
 

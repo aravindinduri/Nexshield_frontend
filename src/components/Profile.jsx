@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Navbar from "./NavBar";
+import Navbar from "./Navbar";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProfilePage from "./profilePage";
