@@ -14,7 +14,6 @@ const HeroSection = () => {
 
   return (
     <>
-      {/* Hero Section with Parallax Effect */}
       <div className="relative flex items-center justify-center h-screen bg-black overflow-hidden">
         <div
           className="absolute inset-x-0 bottom-0 h-full bg-no-repeat bg-bottom"
@@ -77,7 +76,6 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* About Section */}
       <section className="py-12 bg-gray-900 text-gray-100">
         <div className="container mx-auto px-6 md:px-12 text-center">
           <motion.h2
@@ -153,7 +151,6 @@ const HeroSection = () => {
         </div>
       </section>
 
-      {/* Footer Section */}
       <footer className="bg-gray-900 text-gray-400 py-6">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row justify-between items-center">

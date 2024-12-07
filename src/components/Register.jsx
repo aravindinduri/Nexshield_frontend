@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import DashBoad from "./DashBoard";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
+import { Link } from "react-router-dom";
 function Register() {
 
   const navigate = useNavigate();
@@ -145,14 +142,16 @@ function Register() {
             Register
           </button>
         </div>
+        <Link to='/login'>
         <div className="text-center">
           <p className="text-white">
             Already have an Account?{" "}
-            <a href="./login" className="text-blue-500 hover:text-blue-700">
+            <p className="text-blue-500 hover:text-blue-700">
               Login
-            </a>
+            </p>
           </p>
         </div>
+        </Link>
       </div>
     </div>
   );

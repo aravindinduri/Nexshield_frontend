@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -32,7 +31,7 @@ const Navbar = () => {
   }, []);
 
   const handleSignOut = () => {
-    navigate("/login");
+    navigate("/");
     localStorage.removeItem("userData");
     localStorage.removeItem("isLoggedIn");
   };
@@ -59,9 +58,9 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center space-x-4">
-          {isLoggedIn ? (
+          {isLoggedIn != null ? (
             <div className="relative" ref={dropdownRef}>
-<button
+<button 
   onClick={() => setDropdownOpen(!dropdownOpen)}
   className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-gray-600 transition-all duration-300"
 >
@@ -80,18 +79,22 @@ const Navbar = () => {
             </div>
           ) : (
             <>
+            <Link to='/login'>
+
               <button
-                onClick={handleSignIn}
                 className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300"
-              >
+                >
                 Sign In
               </button>
+                </Link>
+
+                <Link to='/register'>
               <button
-                onClick={handleSignUp}
                 className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300"
-              >
+                >
                 Sign Up
               </button>
+                </Link>
             </>
           )}
         </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Link } from "react-router-dom";
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
@@ -83,7 +83,6 @@ function Login() {
               />
             </div>
 
-            {/* Password Input */}
             <div className="relative">
               <label htmlFor="password" className="block text-gray-300 text-sm">
                 Password
@@ -115,16 +114,12 @@ function Login() {
             </button>
           </form>
 
-          {/* Register Link */}
           <div className="mt-4 text-center">
             <p className="text-gray-300">
               Don't have an account?
-              <a
-                href="./register"
-                className="text-blue-500 font-semibold hover:text-blue-700"
-              >
+              <Link to='/register' className="text-blue-500 font-semibold hover:text-blue-700">
                 Register
-              </a>
+                </Link>
             </p>
           </div>
         </div>
