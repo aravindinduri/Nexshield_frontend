@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const navigate = useNavigate();
-
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   useEffect(() => {
@@ -45,60 +45,33 @@ const Navbar = () => {
     navigate("./register");
   };
 
-  const handleLogoClick = () => {
-    navigate("./dashboard");
-  };
-
   return (
     <nav
-      className={`fixed top-0 w-full z-50 ${
-        isScrolled ? "bg-black shadow-lg" : "bg-black"
-      } transition duration-300`}
+    className={`fixed top-0 w-full z-50 transition-shadow duration-300 ${
+      isScrolled ? "bg-black shadow-lg shadow-[0_0_15px_2px_rgba(255,255,255,0.4)]" : "bg-black shadow-none"
+    }`}    
     >
       <div className="container mx-auto px-6 py-4 flex items-center justify-between h-[80px]">
-        {/* Logo */}
-        <div
-          onClick={handleLogoClick}
-          className="text-2xl font-bold text-white cursor-pointer"
-        >
-          NexShield
-        </div>
+        <Link to="/">
+          <div className="text-2xl font-bold text-white cursor-pointer hover:text-gray-300 transition-all duration-300">
+            NexShield
+          </div>
+        </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6 items-center">
-          {!isLoggedIn && (
-            <>
-              <a href="./dashboard" className="text-gray-300 hover:text-blue-400">
-                Home
-              </a>
-              <a href="app/profile" className="text-gray-300 hover:text-blue-400">
-                Profile
-              </a>
-            </>
-          )}
-        </div>
-
-        {/* Profile Icon or Sign In/Sign Up */}
         <div className="flex items-center space-x-4">
           {isLoggedIn ? (
             <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white"
-              >
-                <i className="fas fa-user"></i>
-              </button>
+<button
+  onClick={() => setDropdownOpen(!dropdownOpen)}
+  className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-gray-600 transition-all duration-300"
+>
+  <FontAwesomeIcon icon={faUser} className="text-gray-300 w-6 h-6" />
+</button>
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-black text-gray-300 rounded-lg shadow-lg">
-                  <a
-                    href="./profile"
-                    className="block px-4 py-2 hover:bg-gray-700"
-                  >
-                    Profile
-                  </a>
+                <div className="absolute right-0 mt-2 w-48 bg-black text-gray-300 rounded-lg shadow-lg transition-all duration-300">
                   <button
                     onClick={handleSignOut}
-                    className="w-full text-left block px-4 py-2 hover:bg-gray-700"
+                    className="w-full text-left block px-4 py-2 hover:bg-gray-700 transition-all duration-300"
                   >
                     Sign Out
                   </button>
@@ -109,48 +82,20 @@ const Navbar = () => {
             <>
               <button
                 onClick={handleSignIn}
-                className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition"
+                className="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300"
               >
                 Sign In
               </button>
               <button
                 onClick={handleSignUp}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300"
               >
                 Sign Up
               </button>
             </>
           )}
-
-          {/* Hamburger Icon for Mobile */}
-          <button
-            className="block md:hidden"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <div className="space-y-2">
-              <span className="block w-8 h-1 bg-gray-400"></span>
-              <span className="block w-8 h-1 bg-gray-400"></span>
-              <span className="block w-8 h-1 bg-gray-400"></span>
-            </div>
-          </button>
         </div>
       </div>
-
-      {/* Mobile Dropdown Menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-black">
-          {!isLoggedIn ? (
-            <>
-              <a href="./dashboard" className="block px-4 py-2 text-gray-300">
-                Home
-              </a>
-              <a href="./profile" className="block px-4 py-2 text-gray-300">
-                Profile
-              </a>
-            </>
-          ) : null}
-        </div>
-      )}
     </nav>
   );
 };
