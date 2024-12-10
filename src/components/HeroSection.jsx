@@ -20,7 +20,7 @@ const HeroSection = () => {
         <div
           className="absolute inset-x-0 bottom-0 h-full bg-no-repeat bg-bottom"
           style={{
-            backgroundImage: "url('./src/assets/LooperBG.png')",
+            backgroundImage: "url('https://i.ibb.co/F77rjPr/LooperBG.png')",
             backgroundSize: "cover",
             transform: `translateY(${offsetY * 0.5}px)`,
           }}
@@ -82,7 +82,7 @@ const HeroSection = () => {
       <div
         className="h-64 bg-fixed bg-center bg-cover"
         style={{
-          backgroundImage: "url('./src/assets/cyber.jpeg')",
+          backgroundImage: "url('https://i.ibb.co/1nL12jh/cyber.jpg)",
         }}
       >
         <div className="h-full bg-black bg-opacity-50 flex items-center justify-center">
