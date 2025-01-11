@@ -40,7 +40,7 @@ function Login() {
       console.log('User data:', data);
       localStorage.setItem("userData", JSON.stringify(data));
       localStorage.setItem("isLoggedIn", true);
-      navigate("/app/Dashboard");
+      navigate("/Dashboard");
     } catch (error) {
       toast.error("Invalid username or password");
       console.error('Error during login:', error);
