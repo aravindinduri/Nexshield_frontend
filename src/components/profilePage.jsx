@@ -24,7 +24,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen  bg-gray-900">
       <ProfileSidebar setSection={setSection} />
       <main className="flex-1 p-8 mt-16 md:ml-60">
         {renderSection()}
