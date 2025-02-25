@@ -42,7 +42,6 @@ To install NEXSHIELD, follow these steps:
 ├── 📜 postcss.config.js
 ├── 📜 tailwind.config.js
 └── 📜 vite.config.js
-               # Project description and setup guide
 
 
 ```
