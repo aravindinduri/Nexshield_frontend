@@ -2,11 +2,15 @@ import React from 'react';
 
 const OverviewSection = () => {
   // Example user data (can be replaced with dynamic data)
+
+  const data = JSON.parse(localStorage.getItem("userData"));
+  const username = data.email.split('@')[0];
+
   const userData = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    uploads: 25,
-    streak: 7,
+    name: username,
+    email: data.email,
+    uploads: 0,
+    streak: 0,
     membership: "Premium",
     profileImage: "https://via.placeholder.com/150"
   };
@@ -45,12 +49,12 @@ const OverviewSection = () => {
 
         <div className="bg-yellow-100 text-yellow-800 p-4 rounded-lg shadow">
           <h4 className="text-lg font-medium">Achievements</h4>
-          <p className="text-2xl font-bold">5</p>
+          <p className="text-2xl font-bold">0</p>
         </div>
 
         <div className="bg-purple-100 text-purple-800 p-4 rounded-lg shadow">
           <h4 className="text-lg font-medium">Files Shared</h4>
-          <p className="text-2xl font-bold">12</p>
+          <p className="text-2xl font-bold">0</p>
         </div>
       </div>
 
@@ -58,8 +62,8 @@ const OverviewSection = () => {
       <div className="mt-8">
         <h3 className="text-xl font-semibold text-gray-800 mb-4">Recent Activity</h3>
         <ul className="bg-white shadow-md rounded-lg divide-y">
-          <li className="p-4 hover:bg-gray-50">Uploaded "Project_Report.pdf"</li>
-          <li className="p-4 hover:bg-gray-50">Completed a 7-day streak</li>
+          {/* <li className="p-4 hover:bg-gray-50">Uploaded "Project_Report.pdf"</li>
+          <li className="p-4 hover:bg-gray-50">Completed a 7-day streak</li> */}
           <li className="p-4 hover:bg-gray-50">Upgraded to Premium Membership</li>
         </ul>
       </div>

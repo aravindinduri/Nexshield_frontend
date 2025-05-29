@@ -1,6 +1,8 @@
 import HeroSection from "./HeroSection";
 import Navbar from "./Navbar";
-const LandingPage = () => {
+
+const LandingPage = () => 
+{
   return(
   <>
     <Navbar/>

@@ -20,7 +20,7 @@ function SettingsSection() {
     const fetchKeywords = async () => {
       if (!userId) return;
       try {
-        const response = await axios.get(`http://localhost:5000/api/getkeywords/${userId}`);
+        const response = await axios.get(`https://nexshield-server.onrender.com/api/getkeywords/${userId}`);
         setKeywords(response.data.keywords);
       } catch (error) {
         console.error('Error fetching keywords:', error);
@@ -223,7 +223,7 @@ function SettingsSection() {
 
         {activeTab === 'keywords' && (
           <div>
-            <h2 className="text-2xl font-semibold mb-6 text-blue-400">Manage Keywords</h2>
+            <h2 className="text-2xl font-semibold mb-6 text-blue-400">Manage Organisations</h2>
             <div className="flex space-x-3">
               <input
                 type="text"

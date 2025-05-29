@@ -1,25 +1,24 @@
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import VulnerabilityList from "./VulerabilityList";
-import { useNavigate } from "react-router-dom";
 
-const DashBoad = () => {
-
+const DashBoard = () => {
   const navigate = useNavigate();
 
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (isLoggedIn !== "true") {
+      navigate("/login");
+    }
+  }, [navigate]);
 
-  if(!isLoggedIn)
-      return;
-  if(isLoggedIn === false || isLoggedIn === null)
-    navigate(".");
-
-  return(
+  return (
     <div className="dashboard bg-gray-900 min-h-screen">
       <Navbar />
-      <VulnerabilityList/>
+      <VulnerabilityList />
     </div>
+  );
+};
 
-  )
-}
-
-export default DashBoad;
+export default DashBoard;
