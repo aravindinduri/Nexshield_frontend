@@ -54,7 +54,7 @@ function Register() {
       localStorage.setItem("isLoggedIn", "true");
 
       toast.success("Registration successful!");
-      navigate("/app/Dashboard");
+      navigate("/Dashboard");
     } catch (error) {
       const errMsg =
         error.response?.data?.message || "Registration failed. Try again.";
