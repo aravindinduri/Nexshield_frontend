@@ -16,6 +16,8 @@ import {
   Folder,
   Shield
 } from 'lucide-react';
+import { Dashboard } from '@mui/icons-material';
+import DashBoard from './DashBoard';
 
 const ProfileSidebar = ({ setSection }) => {
   const theme = useTheme();
@@ -49,7 +51,7 @@ const ProfileSidebar = ({ setSection }) => {
     { id: 'overview', icon: LayoutDashboard, label: 'Overview' },
     { id: 'settings', icon: Settings, label: 'Settings' },
     { id: 'files', icon: Folder, label: 'My Files' },
-    { id: 'security', icon: Shield, label: 'Security' },
+    {id:"dashboard",icon:Dashboard,label:"Dash Board"}
   ];
 
   return isMobile ? (

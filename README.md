@@ -51,5 +51,5 @@ To install NEXSHIELD, follow these steps:
 ![App Screenshot](https://i.ibb.co/S7BL4XMH/Screenshot-from-2025-02-03-17-59-27.png)
 
 
-🔗 **Backend Repository:** [NexShield Backend](https://github.com/aravindinduri/Nexshield_server)
+🔗 **Backend Repository:** [NexShield Backend](https://github.com/Ramu-chiluveru/Nexshield_server)
 

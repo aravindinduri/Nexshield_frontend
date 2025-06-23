@@ -4,11 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+
 function Login() {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: ""
-  });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState("");
 
@@ -16,34 +14,38 @@ function Login() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors(""); // clear error on input change
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!formData.email || !formData.password) {
       setErrors("All fields are required!");
       return;
     }
 
     try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      };
-      const response = await axios.post('https://nexshield-server.onrender.com/api/login', formData, config);
-
-      toast.success("Login successful!");
+      const config = { headers: { "Content-Type": "application/json" } };
+      const response = await axios.post(
+        "https://nexshield-server.onrender.com/api/login",
+        formData,
+        config
+      );
 
       const { data } = response;
-      console.log('User data:', data);
+      toast.success("Login successful!");
+
       localStorage.setItem("userData", JSON.stringify(data));
-      localStorage.setItem("isLoggedIn", true);
+      localStorage.setItem("isLoggedIn", "true");
+
       navigate("/Dashboard");
     } catch (error) {
-      toast.error("Invalid username or password");
-      console.error('Error during login:', error);
+      const errorMsg =
+        error.response?.data?.message || "Invalid username or password";
+      toast.error(errorMsg);
+      console.error("Error during login:", error);
     }
   };
 
@@ -55,18 +57,21 @@ function Login() {
     <>
       <ToastContainer />
       <div
-        className="min-h-screen flex items-center bg-black justify-center bg-cover bg-center"
-        style={{ backgroundImage: "url('./src/assets/LooperBG.png')" }}
+        className="min-h-screen flex items-center justify-center bg-black bg-cover bg-center"
+        style={{ backgroundImage: 'url("../../public/LooperBG.png")' }} // Move image to /public folder
       >
         <div className="w-full max-w-md bg-gray-900 bg-opacity-90 p-8 rounded-lg shadow-lg backdrop-blur-lg">
           <h2 className="text-3xl font-extrabold text-center text-white mb-6">
             Login
           </h2>
 
-          {errors && <p className="text-red-500 text-center mb-4">{errors}</p>}
+          {errors && (
+            <p className="text-red-500 text-center font-medium mb-4">
+              {errors}
+            </p>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-5" autoComplete="off">
-            
             <div>
               <label htmlFor="email" className="block text-gray-300 text-sm">
                 Email Address
@@ -78,7 +83,7 @@ function Login() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"
-                className="w-full px-4 py-2 mt-2 bg-gray-800 text-white rounded-md focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 mt-2 bg-gray-800 text-white rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
                 required
               />
             </div>
@@ -94,13 +99,14 @@ function Login() {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="Enter your password"
-                className="w-full px-4 py-2 mt-2 bg-gray-800 text-white rounded-md focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 mt-2 bg-gray-800 text-white rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
                 required
               />
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-gray-200"
+                className="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-gray-200 cursor-pointer"
+                aria-label="Toggle password visibility"
               >
                 {showPassword ? "🙈" : "👁️"}
               </button>
@@ -116,10 +122,13 @@ function Login() {
 
           <div className="mt-4 text-center">
             <p className="text-gray-300">
-              Don't have an account?
-              <Link to='/register' className="text-blue-500 font-semibold hover:text-blue-700">
+              Don&apos;t have an account?{" "}
+              <Link
+                to="/register"
+                className="text-blue-500 font-semibold hover:text-blue-700"
+              >
                 Register
-                </Link>
+              </Link>
             </p>
           </div>
         </div>
